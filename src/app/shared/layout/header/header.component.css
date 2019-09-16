@@ -1,0 +1,20 @@
+.headerContainer {
+  min-width: 100vw;
+  height: 4em;
+  background-color: rgb(0, 153, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 0;
+}
+
+.header__menuButton--burger {
+  width: 3em;
+  height: 2.5em;
+  margin-left: 0.3em;
+}
+
+.header__menuButton--burger:hover {
+  transform: scale(1.1);
+}
