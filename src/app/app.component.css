@@ -12,3 +12,7 @@ mat-sidenav {
 mat-list-item mat-icon {
   margin-right: 0.5em;
 }
+
+.link-active {
+  color: wheat;
+}
