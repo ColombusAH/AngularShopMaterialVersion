@@ -10,13 +10,13 @@ import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
 import { FooterComponent } from './shared/layout/footer/footer.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './shared/layout/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ProductsModule } from './products/products.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -37,8 +37,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     SharedModule,
     LoginModule,
     ProductsModule,
-    MaterialModule,
-    MobxAngularModule
+    MobxAngularModule,
+    MaterialModule
   ],
   providers: [
     {

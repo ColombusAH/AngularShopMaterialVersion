@@ -16,3 +16,8 @@ mat-list-item mat-icon {
 .link-active {
   color: wheat;
 }
+
+main {
+  height: 100%;
+  width: 100%;
+}

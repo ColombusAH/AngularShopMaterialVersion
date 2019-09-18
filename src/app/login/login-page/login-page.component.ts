@@ -39,6 +39,7 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit() {
     this.submited = true;
+    console.log(this.loginForm.value);
 
     if (this.loginForm.valid) {
       this.userService
