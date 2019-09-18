@@ -8,7 +8,7 @@ import _ from 'lodash';
 @Injectable({
   providedIn: 'root'
 })
-export class UserStore {
+export class CartService {
   @observable
   cart: Cart;
 

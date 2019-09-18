@@ -40,6 +40,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const MaterialComponents = [
   MatSidenavModule,
@@ -47,7 +48,10 @@ const MaterialComponents = [
   MatGridListModule,
   MatToolbarModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatCardModule
 ];
 
 @NgModule({

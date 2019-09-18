@@ -1,7 +1,7 @@
 import { User } from '../models/user.model';
 import { Injectable } from '@angular/core';
 import { observable, autorun, computed, action } from 'mobx';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -36,16 +36,20 @@ export class UserService {
   //actions
 
   @action login(username: string, password: string) {
-    this.http
+    return this.http
       .post<User>(this.apiUrl + '/login', { username, password })
-      .pipe(take(1))
-      .subscribe(user => {
-        if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this._isLoggedIn = true;
-        } else {
-          this._isLoggedIn = false;
-        }
-      });
+      .pipe(
+        take(1),
+        map(user => {
+          if (user) {
+            localStorage.setItem('user', JSON.stringify(user));
+            this._isLoggedIn = true;
+            return user;
+          } else {
+            this._isLoggedIn = false;
+            return undefined;
+          }
+        })
+      );
   }
 }
