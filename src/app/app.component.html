@@ -24,6 +24,10 @@
         <mat-icon>person</mat-icon> Login
       </mat-list-item>
 
+      <mat-list-item *ngIf="user.isLoggedIn" (click)="logout(sidenav);" [routerLink]="['/home']">
+        <mat-icon>person</mat-icon> Logout
+      </mat-list-item>
+
     </mat-nav-list>
   </mat-sidenav>
 

@@ -10,4 +10,9 @@ import { UserService } from './core/services/user.service';
 export class AppComponent {
   constructor(private user: UserService) {}
   title = 'shopMaterialVersion';
+
+  logout(sidenavbar) {
+    sidenavbar.toggle();
+    this.user.logout();
+  }
 }

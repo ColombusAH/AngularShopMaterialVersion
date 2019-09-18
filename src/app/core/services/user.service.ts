@@ -17,6 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) {
     this.user = {
       username: '',
+      password: '',
       role: ''
     };
 
@@ -51,5 +52,10 @@ export class UserService {
           }
         })
       );
+  }
+
+  @action logout() {
+    localStorage.removeItem('user');
+    this._isLoggedIn = false;
   }
 }

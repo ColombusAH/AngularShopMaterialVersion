@@ -16,7 +16,6 @@ import { UserService } from 'src/app/core/services/user.service';
 export class LoginPageComponent {
   loginForm: FormGroup;
   submited: boolean = false;
-  loginSuccess: boolean = false;
   returnUrl: string;
   constructor(
     private userService: UserService,
@@ -46,13 +45,12 @@ export class LoginPageComponent {
 
   onSubmit() {
     this.submited = true;
-    console.log(this.loginForm.value);
 
     if (this.loginForm.valid) {
       this.userService
         .login(this.usernameControl.value, this.passwordControl.value)
         .subscribe(user => {
-          if (this.loginSuccess) {
+          if (user) {
             this.router.navigate([this.returnUrl]);
           }
         });
