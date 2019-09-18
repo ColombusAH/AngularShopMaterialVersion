@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -13,7 +13,7 @@ import { UserService } from 'src/app/core/services/user.service';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
   loginForm: FormGroup;
   submited: boolean = false;
   loginSuccess: boolean = false;
@@ -24,6 +24,13 @@ export class LoginPageComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
     if (this.userService.isLoggedIn) {
       this.router.navigate(['/']);
     }
@@ -54,14 +61,5 @@ export class LoginPageComponent implements OnInit {
 
   setSubmited() {
     this.submited = false;
-  }
-
-  ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 }
