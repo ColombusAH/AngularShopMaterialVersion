@@ -19,13 +19,17 @@
             </p>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button><i class="material-icons">
-                    add_shopping_cart
+            <div class="shopping-cart--warpper" *appShowIfLoggedIn="true">
+                <button mat-button><i class="material-icons">
+                        add_shopping_cart
+                    </i></button>
+                <button mat-button><i class="material-icons">
+                        remove_shopping_cart
+                    </i></button>
+            </div>
+            <button mat-button><i class="material-icons" *appShowIfAdmin="true">
+                    edit
                 </i></button>
-            <button mat-button><i class="material-icons">
-                    remove_shopping_cart
-                </i></button>
-            <button mat-button>SHARE</button>
         </mat-card-actions>
     </mat-card>
 </div>

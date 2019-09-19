@@ -43,6 +43,7 @@ export class UserService {
         take(1),
         map(user => {
           if (user) {
+            this.user = user;
             localStorage.setItem('user', JSON.stringify(user));
             this._isLoggedIn = true;
             return user;

@@ -25,6 +25,10 @@ mat-chip {
   margin: 0.3em;
 }
 
+.shopping-cart--warpper {
+  display: inline-flex;
+}
+
 @media screen and (max-width: 584px) {
   .card {
     width: 70%;
