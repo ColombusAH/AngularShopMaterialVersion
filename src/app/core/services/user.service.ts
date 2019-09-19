@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
   @observable
-  user: User;
+  private user: User;
   @observable private _isLoggedIn: boolean;
 
   private readonly apiUrl = 'backend/api';

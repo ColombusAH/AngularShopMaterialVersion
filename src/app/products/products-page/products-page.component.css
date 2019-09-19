@@ -1,0 +1,20 @@
+.mat-chip-list-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.wrapper__products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+  width: 30%;
+  margin: 0.3em;
+}
+
+@media screen and (max-width: 584px) {
+  .card {
+    width: 70%;
+  }
+}
