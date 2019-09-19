@@ -11,14 +11,19 @@ import { Product } from 'src/app/core/models/product.model';
 export class ProductsPageComponent {
   choosedCategory: Category;
   products: Product[];
+  allProducts: Product[];
   constructor(private productService: ProductsService) {
-    this.products = this.productService.allProducts;
-    this.choosedCategory = { id: 0, title: 'all' };
+    this.allProducts = this.products = this.productService.allProducts;
+    this.choosedCategory = { id: '0', title: 'all' };
   }
 
   categorySelected(category: Category) {
-    console.log(category.id);
-    this.choosedCategory = category;
+    this.products = this.allProducts.filter(
+      product =>
+        category.title.toLowerCase() === 'all' ||
+        product.categoryId === category.id
+    );
+    console.log(this.products);
   }
 
   isSelected(c: Category): boolean {

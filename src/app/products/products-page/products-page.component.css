@@ -1,6 +1,18 @@
+.wrapper__categories {
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
 .mat-chip-list-wrapper {
   display: flex;
   flex-direction: column;
+}
+
+mat-chip {
+  width: 5em;
 }
 .wrapper__products {
   display: flex;
