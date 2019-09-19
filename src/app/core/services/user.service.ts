@@ -15,13 +15,17 @@ export class UserService {
   private readonly apiUrl = 'backend/api';
 
   constructor(private http: HttpClient) {
-    this.user = {
-      username: '',
-      password: '',
-      role: ''
-    };
-
-    this._isLoggedIn = false;
+    this.user = JSON.parse(localStorage.getItem('user'));
+    if (this.user) {
+      this._isLoggedIn = true;
+    } else {
+      this.user = {
+        username: '',
+        password: '',
+        role: ''
+      };
+      this._isLoggedIn = false;
+    }
   }
 
   // computed

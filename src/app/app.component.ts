@@ -1,3 +1,4 @@
+import { CartService } from './core/services/cart.service';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { UserService } from './core/services/user.service';
 
@@ -8,7 +9,9 @@ import { UserService } from './core/services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private user: UserService) {}
+  constructor(private user: UserService, private cart: CartService) {
+    console.log(this.cart.numOfProduct);
+  }
   title = 'shopMaterialVersion';
 
   logout(sidenavbar) {

@@ -1,4 +1,3 @@
-import { MockBackendInterceptor } from './core/interceptors/mock-backend.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MobxAngularModule } from 'mobx-angular';
@@ -15,7 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ProductsModule } from './products/products.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 
 @NgModule({
@@ -40,13 +39,7 @@ import { MaterialModule } from './material/material.module';
     MobxAngularModule,
     MaterialModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: MockBackendInterceptor,
-      multi: true
-    }
-  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {}

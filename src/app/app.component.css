@@ -33,6 +33,10 @@ main {
   height: 3em;
 }
 
+.cartIcon--wrapper {
+  margin-right: 1.3em;
+}
+
 .wallImg {
   width: 100%;
   height: 9em;

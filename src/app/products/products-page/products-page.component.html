@@ -20,10 +20,10 @@
         </mat-card-content>
         <mat-card-actions>
             <div class="shopping-cart--warpper" *appShowIfLoggedIn="true">
-                <button mat-button><i class="material-icons">
+                <button appAddProductTocart [product]="product" mat-button><i class="material-icons">
                         add_shopping_cart
                     </i></button>
-                <button mat-button><i class="material-icons">
+                <button appRemoveProductFromCart [product]="product" mat-button><i class="material-icons">
                         remove_shopping_cart
                     </i></button>
             </div>
