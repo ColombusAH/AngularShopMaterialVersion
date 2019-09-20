@@ -2,6 +2,8 @@ import { ProductsService } from './../../core/services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/core/models/category.model';
 import { Product } from 'src/app/core/models/product.model';
+import { MatDialog } from '@angular/material/dialog';
+import { EditProductDialogComponent } from '../edit-product-dialog/edit-product-dialog.component';
 
 @Component({
   selector: 'app-products-page',
@@ -12,7 +14,10 @@ export class ProductsPageComponent {
   choosedCategory: Category;
   products: Product[];
   allProducts: Product[];
-  constructor(private productService: ProductsService) {
+  constructor(
+    private productService: ProductsService,
+    public dialog: MatDialog
+  ) {
     this.allProducts = this.products = this.productService.allProducts;
     this.choosedCategory = { id: '0', title: 'all' };
   }
@@ -28,5 +33,13 @@ export class ProductsPageComponent {
 
   isSelected(c: Category): boolean {
     return this.choosedCategory.id === c.id;
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(EditProductDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
