@@ -1,6 +1,6 @@
 <div class="wrapper__categories">
     <mat-chip-list aria-label="category selection">
-        <mat-chip color="primary" *ngFor="let c of this.productService.categories" (click)="categorySelected(c)"
+        <mat-chip color="primary" *ngFor="let c of productService.categories" (click)="categorySelected(c)"
             selectable="true" [selected]="isSelected(c)">
             {{c.title}}</mat-chip>
     </mat-chip-list>
@@ -27,7 +27,7 @@
                         remove_shopping_cart
                     </i></button>
             </div>
-            <button mat-button (click)="openDialog()"><i class="material-icons" *appShowIfAdmin="true">
+            <button mat-button (click)="openDialog(product)"><i class="material-icons" *appShowIfAdmin="true">
                     edit
                 </i></button>
         </mat-card-actions>

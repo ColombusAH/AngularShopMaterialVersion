@@ -35,8 +35,8 @@ export class ProductsPageComponent {
     return this.choosedCategory.id === c.id;
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(EditProductDialogComponent);
+  openDialog(product: Product) {
+    const dialogRef = this.dialog.open(EditProductDialogComponent, {data: product});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
