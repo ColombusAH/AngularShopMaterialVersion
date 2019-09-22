@@ -33,11 +33,15 @@ export class ProductsService {
     return this.products;
   }
 
+  @computed get allCategories(): Category[] {
+    return this.categories;
+  }
+
   @action addProduct(product: Product): void {
     this.products.push({ ...product, id: _.uniqueId() });
   }
   @action updateProduct(uProduct: Product): void {
     const index = this.products.findIndex(prod => prod.id === uProduct.id);
-    this.products[index] = { ...uProduct };
+    Object.assign(this.products[index], uProduct);
   }
 }

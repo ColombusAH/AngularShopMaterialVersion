@@ -2,6 +2,10 @@ h3 {
   margin-bottom: 1em;
 }
 
+mat-radio-group {
+  margin-bottom: 1em;
+}
+
 mat-radio-button {
   margin-left: 1.5em;
   margin-top: 1em;
@@ -15,6 +19,7 @@ form {
   width: 100%;
   min-width: 60vw;
 }
+
 input,
 mat-form-field {
   width: 55vw;

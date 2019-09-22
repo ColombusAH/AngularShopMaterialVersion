@@ -5,13 +5,15 @@ import { ShowIfAdminDirective } from './directives/show-if-admin.directive';
 import { AddProductTocartDirective } from './directives/add-product-tocart.directive';
 import { RemoveProductFromCartDirective } from './directives/remove-product-from-cart.directive';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CategoryFilterPipe } from './pipes/category-filter.pipe';
 
 @NgModule({
   declarations: [
     ShowIfLoggedInDirective,
     ShowIfAdminDirective,
     AddProductTocartDirective,
-    RemoveProductFromCartDirective
+    RemoveProductFromCartDirective,
+    CategoryFilterPipe
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
@@ -20,7 +22,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     AddProductTocartDirective,
     RemoveProductFromCartDirective,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CategoryFilterPipe
   ]
 })
 export class SharedModule {}

@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Edit product</h1>
 <mat-dialog-content>
     <h3>{{product.title | titlecase}}</h3>
-    <form [formGroup]="productForm">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
 
         <label>Category: </label>
         <mat-radio-group formControlName="category">
@@ -11,28 +11,33 @@
 
         <div>
             <mat-form-field>
-                <input matInput placeholder="imageUrl" type="text" formControlName="image">
+                <input matInput placeholder="imageUrl" type="text" formControlName="imageUrl">
+                <mat-error *ngIf="imageUrl.invalid">ImageUrl is required</mat-error>
             </mat-form-field>
         </div>
         <div>
             <mat-form-field>
                 <input matInput placeholder="title" type="text" formControlName="title">
+                <mat-error *ngIf="title.invalid">Title is required</mat-error>
             </mat-form-field>
         </div>
         <div>
             <mat-form-field>
                 <input matInput placeholder="price" type="number" min="1" formControlName="price">
+                <mat-error *ngIf="price.invalid">Price is required</mat-error>
             </mat-form-field>
         </div>
         <div>
             <mat-form-field>
-                <input matInput placeholder="description" type="text" formControlName="description">
+                <textarea matInput placeholder="description" type="text" formControlName="description"></textarea>
+                <mat-error *ngIf="description.invalid">Description is required</mat-error>
             </mat-form-field>
         </div>
 
     </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+    <button mat-button [mat-dialog-close]="false">Cancel</button>
+    <button mat-button [mat-dialog-close]="true" (click)="onSubmit()" [disabled]="productForm.invalid"
+        cdkFocusInitial>Submit</button>
 </mat-dialog-actions>

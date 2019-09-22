@@ -1,5 +1,5 @@
 import { ProductsService } from './../../core/services/products.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Category } from 'src/app/core/models/category.model';
 import { Product } from 'src/app/core/models/product.model';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,25 +10,19 @@ import { EditProductDialogComponent } from '../edit-product-dialog/edit-product-
   templateUrl: './products-page.component.html',
   styleUrls: ['./products-page.component.css']
 })
-export class ProductsPageComponent {
+export class ProductsPageComponent implements OnInit {
   choosedCategory: Category;
   products: Product[];
-  allProducts: Product[];
+  categories: Category[];
+
   constructor(
     private productService: ProductsService,
-    public dialog: MatDialog
-  ) {
-    this.allProducts = this.products = this.productService.allProducts;
-    this.choosedCategory = { id: '0', title: 'all' };
-  }
+    public dialog: MatDialog,
+    private cd: ChangeDetectorRef
+  ) {}
 
   categorySelected(category: Category) {
-    this.products = this.allProducts.filter(
-      product =>
-        category.title.toLowerCase() === 'all' ||
-        product.categoryId === category.id
-    );
-    console.log(this.products);
+    this.choosedCategory = category;
   }
 
   isSelected(c: Category): boolean {
@@ -36,10 +30,21 @@ export class ProductsPageComponent {
   }
 
   openDialog(product: Product) {
-    const dialogRef = this.dialog.open(EditProductDialogComponent, {data: product});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    const dialogRef = this.dialog.open(EditProductDialogComponent, {
+      data: product
     });
+
+    dialogRef.afterClosed().subscribe(ans => {
+      if (ans) {
+        //add success popup
+        this.cd.detectChanges();
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    this.products = this.productService.allProducts;
+    this.categories = this.productService.allCategories;
+    this.choosedCategory = { id: '0', title: 'all' };
   }
 }

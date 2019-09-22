@@ -16,12 +16,35 @@ export class EditProductDialogComponent {
     private fb: FormBuilder,
     private productService: ProductsService
   ) {
-    this.productForm = fb.group({
+    this.productForm = this.fb.group({
       category: [product.categoryId, Validators.required],
-      image: [product.imageUrl, Validators.required],
+      imageUrl: [product.imageUrl, Validators.required],
       title: [product.title, Validators.required],
       price: [product.price, Validators.required],
       description: [product.description]
     });
+  }
+
+  get imageUrl() {
+    return this.productForm.get('imageUrl');
+  }
+
+  get title() {
+    return this.productForm.get('title');
+  }
+
+  get price() {
+    return this.productForm.get('price');
+  }
+
+  get description() {
+    return this.productForm.get('description');
+  }
+
+  onSubmit() {
+    if (this.productForm.valid) {
+      this.product = { ...this.productForm.value, id: this.product.id };
+      this.productService.updateProduct(this.product);
+    }
   }
 }
